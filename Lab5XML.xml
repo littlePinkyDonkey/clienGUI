@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Mama-Trolls>
+    <Mama>
+        <name>selena</name>
+        <tiredLevel>31</tiredLevel>
+        <quantityOfActions>12</quantityOfActions>
+        <position>west</position>
+    </Mama>
+    <Mama>
+        <name>test</name>
+        <tiredLevel>12</tiredLevel>
+        <quantityOfActions>3</quantityOfActions>
+        <position>north</position>
+    </Mama>
+    <Mama>
+        <name>be-be</name>
+        <tiredLevel>5</tiredLevel>
+        <quantityOfActions>1</quantityOfActions>
+        <position>south</position>
+    </Mama>
+</Mama-Trolls>
