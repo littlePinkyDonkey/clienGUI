@@ -15,6 +15,7 @@ public class Client implements Runnable {
     private int port;
     private Socket socket;
     private Scanner scanner = new Scanner(System.in);
+    private String userName;
 
     Client(String host, int port){
         this.host = host;
@@ -51,21 +52,15 @@ public class Client implements Runnable {
                     if (command.equals(""))
                         continue;
 
-                    if (command.equals("import")){
-                        Path path = Paths.get("Lab5XML.xml");
-
-                        try{
-                            command += " " + Files.lines(path).collect(Collectors.joining("\n"));
-                        }catch (IOException e){
-                            e.printStackTrace();
-                        }
+                    if (command.contains(" auth")){
+                        this.userName = command.split(" ")[0];
                     }
                     try{
                         if (socket==null || !socket.isConnected()) {
                             System.out.println("test");
                             continue;
                         }
-                        socket.getOutputStream().write(command.getBytes());
+                        socket.getOutputStream().write(command.concat("/" + userName).getBytes());
                         System.out.println("Go to server");
                         byte[] bytes = new byte[8192];
                         int count = socket.getInputStream().read(bytes);
