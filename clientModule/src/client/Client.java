@@ -1,25 +1,27 @@
 package client;
 
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
-import java.util.stream.Collectors;
+import java.util.concurrent.Exchanger;
 
 public class Client implements Runnable {
+    private final Exchanger<String> command_exchanger;
+    private final Exchanger<Boolean> connection_exchanger;
     private String host;
     private int port;
     private Socket socket;
     private Scanner scanner = new Scanner(System.in);
     private String userName;
 
-    Client(String host, int port){
+    Client(String host, int port, Exchanger<String> command_exchanger, Exchanger<Boolean> connection_exchanger){
         this.host = host;
         this.port = port;
+        this.command_exchanger = command_exchanger;
+        this.connection_exchanger = connection_exchanger;
     }
 
     @Override
@@ -27,44 +29,41 @@ public class Client implements Runnable {
         for (;;){
             try{
                 getConnection(host,port);
-                System.out.println("Connection is ready. Enter help");
+                System.out.println("ready");
             }catch (ConnectException e){
-                System.out.println("connect/exit");
-                if (scanner.hasNextLine()){
-                    String decision = scanner.nextLine();
+                try{
+                    System.out.println("connect/exit");
+                    connection_exchanger.exchange(true);
+
+                    String decision = command_exchanger.exchange(null);
                     if (decision.equals("connect")){
                         continue;
                     } else if (decision.equals("exit")){
                         System.exit(1);
-                    } else{
-                        System.out.println("Incorrect input. Try again!");
-                        continue;
                     }
+                }catch (InterruptedException ex){
+                    e.printStackTrace();
                 }
             }catch (IOException e){
                 e.printStackTrace();
             }
 
             while (true){
-                if (scanner.hasNextLine()){
-                    String command = scanner.nextLine();
+                try{
 
-                    if (command.equals(""))
-                        continue;
+                    String command = command_exchanger.exchange("Go to server");
 
                     if (command.contains(" auth")){
                         this.userName = command.split(" ")[0];
                     }
                     try{
                         if (socket==null || !socket.isConnected()) {
-                            System.out.println("test");
                             continue;
                         }
                         socket.getOutputStream().write(command.concat("/" + userName).getBytes());
-                        System.out.println("Go to server");
                         byte[] bytes = new byte[8192];
                         int count = socket.getInputStream().read(bytes);
-                        System.out.println(new String(bytes,0,count));
+                        command_exchanger.exchange(new String(bytes,0,count));
 
                         if (command.equals("exit"))
                             System.exit(1);
@@ -81,6 +80,9 @@ public class Client implements Runnable {
                         }
                         e.printStackTrace();
                     }
+
+                }catch (InterruptedException e){
+                    e.printStackTrace();
                 }
             }
         }
