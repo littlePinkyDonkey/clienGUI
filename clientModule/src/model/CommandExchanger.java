@@ -29,7 +29,7 @@ public class CommandExchanger {
         }
     }
 
-    public String sendOldUser(StringBuilder user){
+    public String sendOldUser(StringBuilder user) {
         try {
             return exchanger.exchange(user.toString());
         } catch (InterruptedException e) {

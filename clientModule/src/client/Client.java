@@ -51,7 +51,7 @@ public class Client implements Runnable {
             while (true){
                 try{
 
-                    String command = command_exchanger.exchange("Go to server");
+                    String command = command_exchanger.exchange(null);
 
                     if (command.contains(" auth")){
                         this.userName = command.split(" ")[0];

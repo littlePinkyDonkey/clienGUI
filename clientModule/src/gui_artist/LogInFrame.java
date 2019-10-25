@@ -6,7 +6,6 @@ import model.CommandExchanger;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.concurrent.Exchanger;
@@ -17,9 +16,10 @@ public class LogInFrame implements MyFrame {
     private CommandExchanger command_sender;
 
     private JFrame frame;
-    private final Dimension screen_size;
+    private Dimension screen_size;
     private final JPanel sign_in_panel = new JPanel();
     private final JPanel sign_up_panel = new JPanel();
+    private final JPanel empty_panel = new JPanel();
     private final Font font = new Font("Arial",Font.PLAIN,20);
     private final Border border = BorderFactory.createEtchedBorder();
     private final Color panes_background = new Color(255,250,250);
@@ -42,26 +42,31 @@ public class LogInFrame implements MyFrame {
     private String server_answer;
 
     private final ActionListener sign_up_action = event -> {
-        String reg_login = this.reg_login.getText();
-        String email = this.email.getText();
+        try{
+            String reg_login = this.reg_login.getText();
+            String email = this.email.getText();
 
-        server_answer = new LogInCreator(command_sender).registration(reg_login,email);
+            new LogInCreator(command_sender).registration(reg_login,email);
+            if (command_exchanger.exchange(null).equals("successful"))
+                server_answer = "You've got a new account! Please, check your email to get the password";
+            showInfoDialog();
 
-        this.reg_login.setText(null);
-        this.email.setText(null);
+            this.reg_login.setText(null);
+            this.email.setText(null);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
     };
     private final ActionListener sing_in_action = event -> {
         try{
             String auth_login = this.auth_login.getText();
             String password = new String(this.password.getPassword());
 
-            //не ответ сервера, пофиксить
             new LogInCreator(command_sender).authorization(auth_login,password);
 
             server_answer = command_exchanger.exchange(null);
-            System.out.println(server_answer);
             if (server_answer.equals("successful"))
-                new MainFrame(command_exchanger,frame);
+                new MainFrame(command_exchanger,frame,auth_login);
 
             this.auth_login.setText(null);
             this.password.setText(null);
@@ -78,11 +83,19 @@ public class LogInFrame implements MyFrame {
         this.window_event = new Windows(frame);
         this.command_sender = CommandExchanger.getInstance(command_exchanger);
     }
+    public LogInFrame(JFrame frame,Exchanger<String> command_exchanger){
+        this.command_exchanger = command_exchanger;
+        this.frame = frame;
+        this.window_event = new Windows(frame);
+        this.command_sender = CommandExchanger.getInstance(command_exchanger);
+    }
 
     @Override
     public void drawFrame() throws InterruptedException{
+        frame.getContentPane().removeAll();
+        frame.repaint();
         frame.setVisible(true);
-        frame.setBounds(screen_size.width/2-400,screen_size.height/2-400,800,800);
+        frame.setBounds(screen_size.width/2-250,screen_size.height/2-150,500,300);
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.setTitle("Authorization");
         frame.addWindowListener(window_event.getClosing());
@@ -109,8 +122,11 @@ public class LogInFrame implements MyFrame {
         sign_up_panel.add(sign_up_button,createConstrains(1,2));
         sign_up_button.addActionListener(sign_up_action);
         sign_up_panel.setBackground(panes_background);
-        sign_up_panel.setBorder(border);
+        //sign_up_panel.setBorder(border);
         frame.add(sign_up_panel,BorderLayout.WEST);
+
+
+        frame.add(empty_panel,BorderLayout.CENTER);
 
         sign_in_panel.setLayout(gridBagLayout);
         sign_in_panel.add(sign_in_label,createConstrains(0,0));
@@ -119,16 +135,23 @@ public class LogInFrame implements MyFrame {
         sign_in_panel.add(password,createConstrains(1,1));
         sign_in_panel.add(sing_in_button,createConstrains(1,2));
         sign_in_panel.setBackground(panes_background);
-        sign_in_panel.setBorder(border);
+        //sign_in_panel.setBorder(border);
         sing_in_button.addActionListener(sing_in_action);
         frame.add(sign_in_panel,BorderLayout.EAST);
 
         frame.pack();
         while (connection_exchanger.exchange(null))
-            showDialog();
+            showErrorDialog();
     }
 
-    private void showDialog() throws InterruptedException{
+    @Override
+    public void showInfoDialog() {
+        JOptionPane.showMessageDialog(
+                frame.getContentPane(),server_answer,"Welcome!",JOptionPane.INFORMATION_MESSAGE
+        );
+    }
+
+    private void showErrorDialog() throws InterruptedException{
         int selected = JOptionPane.showConfirmDialog(
                 frame.getContentPane(),"Reconnect?","Bad connection",JOptionPane.YES_NO_OPTION
         );
