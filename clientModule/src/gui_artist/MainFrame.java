@@ -20,7 +20,7 @@ public class MainFrame implements MyFrame {
     private final ActionListener authorization_action = event ->{
         try{
             LogInFrame frame = new LogInFrame(main_frame,command_exchanger);
-            frame.drawFrame();
+            frame.redrawFrame();
         }catch (InterruptedException e){
             e.printStackTrace();
         }
@@ -36,22 +36,45 @@ public class MainFrame implements MyFrame {
 
     @Override
     public void drawFrame() throws InterruptedException {
-        main_frame.getContentPane().removeAll();
-        main_frame.repaint();
-        main_frame.setTitle(user_name);
-        main_frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        setDefaultFrameSettings();
+        drawElements();
+    }
 
+    @Override
+    public void redrawFrame() throws InterruptedException {
+        setRepeatFrameSettings();
+        drawElements();
+    }
+
+    @Override
+    public void drawElements() {
         menu_bar.add(settings);
         menu_bar.add(user_command_center);
         menu_bar.add(user_account);
         menu_bar.add(go_to_auth);
+
+        JButton test = (JButton) main_frame.add(new JButton("test"));
+        test.addActionListener(authorization_action);
 
         main_frame.setJMenuBar(menu_bar);
         main_frame.revalidate();
     }
 
     @Override
-    public void showInfoDialog() {
+    public void setDefaultFrameSettings() {
+        main_frame.getContentPane().removeAll();
+        main_frame.repaint();
+        main_frame.setTitle(user_name);
+        main_frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+    }
 
+    @Override
+    public void setRepeatFrameSettings() {
+        setDefaultFrameSettings();
+    }
+
+    @Override
+    public void showInfoDialog() {
+        
     }
 }

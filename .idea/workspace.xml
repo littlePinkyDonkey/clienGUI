@@ -7,14 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73defc28-7e8f-401d-9e36-9c932271fdd1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clientModule/src/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/clientModule/src/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clientModule/src/gui_artist/LogInFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/clientModule/src/gui_artist/LogInFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clientModule/src/gui_artist/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/clientModule/src/gui_artist/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clientModule/src/gui_artist/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/clientModule/src/gui_artist/MyFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clientModule/src/model/CommandExchanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/clientModule/src/model/CommandExchanger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/clientModule/gui_artist/LogInFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/clientModule/gui_artist/LogInFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/clientModule/gui_artist/MainFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/clientModule/gui_artist/MainFrame.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clientModule/src/client/GuiThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="186">
               <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -55,32 +50,37 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clientModule/src/gui_artist/LogInFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="49" column="105" selection-start-line="49" selection-start-column="105" selection-end-line="49" selection-end-column="105" />
+            <state relative-caret-position="228">
+              <caret line="167" column="24" lean-forward="true" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="24" />
               <folding>
-                <element signature="e#2031#2712#0" />
+                <element signature="e#1716#2300#0" />
+                <element signature="e#2352#2944#0" />
                 <element signature="method#LogInFrame#0;class#LogInFrame#0" />
                 <element signature="method#LogInFrame#1;class#LogInFrame#0" />
+                <element signature="method#drawFrame#0;class#LogInFrame#0" />
+                <element signature="method#redrawFrame#0;class#LogInFrame#0" />
+                <element signature="method#drawElements#0;class#LogInFrame#0" />
+                <element signature="method#setDefaultFrameSettings#0;class#LogInFrame#0" />
                 <element signature="method#showInfoDialog#0;class#LogInFrame#0" />
-                <element signature="method#showDialog#0;class#LogInFrame#0" />
+                <element signature="method#showErrorDialog#0;class#LogInFrame#0" />
                 <element signature="method#createConstrains#0;class#LogInFrame#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/clientModule/src/gui_artist/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="54" selection-start-line="54" selection-end-line="54" />
+            <state relative-caret-position="928">
+              <caret line="77" column="8" lean-forward="true" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#MainFrame#0;class#MainFrame#0" />
-                <element signature="method#drawFrame#0;class#MainFrame#0" />
+                <element signature="method#redrawFrame#0;class#MainFrame#0" />
               </folding>
             </state>
           </provider>
@@ -145,10 +145,10 @@
         <option value="$PROJECT_DIR$/clientModule/src/model/LogInExchanger.java" />
         <option value="$PROJECT_DIR$/clientModule/src/controller/LogInCreator.java" />
         <option value="$PROJECT_DIR$/clientModule/src/model/CommandExchanger.java" />
-        <option value="$PROJECT_DIR$/clientModule/src/gui_artist/MyFrame.java" />
-        <option value="$PROJECT_DIR$/clientModule/src/gui_artist/MainFrame.java" />
         <option value="$PROJECT_DIR$/clientModule/src/client/Client.java" />
         <option value="$PROJECT_DIR$/clientModule/src/gui_artist/LogInFrame.java" />
+        <option value="$PROJECT_DIR$/clientModule/src/gui_artist/MyFrame.java" />
+        <option value="$PROJECT_DIR$/clientModule/src/gui_artist/MainFrame.java" />
       </list>
     </option>
   </component>
@@ -319,18 +319,18 @@
       <workItem from="1571652618874" duration="599000" />
       <workItem from="1571814891573" duration="5315000" />
       <workItem from="1571826089556" duration="13163000" />
-      <workItem from="1572007657742" duration="2189000" />
+      <workItem from="1572007657742" duration="8382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97238000" />
+    <option name="totallyTimeSpent" value="103431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4973545" visible="true" weight="0.29797572" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4973545" visible="true" weight="0.29797572" />
       <window_info id="Structure" order="1" sideWeight="0.5026455" side_tool="true" weight="0.27935222" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -339,7 +339,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3285968" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3285968" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39964476" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -467,16 +467,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/clientModule/src/controller/Actions.java" />
     <entry file="file://$PROJECT_DIR$/clientModule/src/model/CommandCreater.java" />
-    <entry file="file://$PROJECT_DIR$/clientModule/src/controller/Windows.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/javax/swing/BorderFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-342">
@@ -488,40 +478,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clientModule/src/client/GuiThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#GuiThread#0;class#GuiThread#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clientModule/src/gui_artist/MyFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clientModule/src/gui_artist/MainFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#MainFrame#0;class#MainFrame#0" />
-            <element signature="method#drawFrame#0;class#MainFrame#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clientModule/src/controller/LogInCreator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="166">
           <caret line="14" column="37" lean-forward="true" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clientModule/src/controller/Windows.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -537,6 +507,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/InterruptedException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="49" column="40" lean-forward="true" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Exception.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/clientModule/src/client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="86">
@@ -544,17 +528,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/clientModule/src/gui_artist/MyFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clientModule/src/client/GuiThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#GuiThread#0;class#GuiThread#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/clientModule/src/gui_artist/LogInFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="49" column="105" selection-start-line="49" selection-start-column="105" selection-end-line="49" selection-end-column="105" />
+        <state relative-caret-position="228">
+          <caret line="167" column="24" lean-forward="true" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="24" />
           <folding>
-            <element signature="e#2031#2712#0" />
+            <element signature="e#1716#2300#0" />
+            <element signature="e#2352#2944#0" />
             <element signature="method#LogInFrame#0;class#LogInFrame#0" />
             <element signature="method#LogInFrame#1;class#LogInFrame#0" />
+            <element signature="method#drawFrame#0;class#LogInFrame#0" />
+            <element signature="method#redrawFrame#0;class#LogInFrame#0" />
+            <element signature="method#drawElements#0;class#LogInFrame#0" />
+            <element signature="method#setDefaultFrameSettings#0;class#LogInFrame#0" />
             <element signature="method#showInfoDialog#0;class#LogInFrame#0" />
-            <element signature="method#showDialog#0;class#LogInFrame#0" />
+            <element signature="method#showErrorDialog#0;class#LogInFrame#0" />
             <element signature="method#createConstrains#0;class#LogInFrame#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clientModule/src/gui_artist/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="928">
+          <caret line="77" column="8" lean-forward="true" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#MainFrame#0;class#MainFrame#0" />
+            <element signature="method#redrawFrame#0;class#MainFrame#0" />
           </folding>
         </state>
       </provider>

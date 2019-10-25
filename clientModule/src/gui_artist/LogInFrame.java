@@ -88,22 +88,28 @@ public class LogInFrame implements MyFrame {
         this.frame = frame;
         this.window_event = new Windows(frame);
         this.command_sender = CommandExchanger.getInstance(command_exchanger);
+        this.screen_size = Toolkit.getDefaultToolkit().getScreenSize();
     }
 
     @Override
     public void drawFrame() throws InterruptedException{
-        frame.getContentPane().removeAll();
-        frame.repaint();
-        frame.setVisible(true);
-        frame.setBounds(screen_size.width/2-250,screen_size.height/2-150,500,300);
-        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        frame.setTitle("Authorization");
-        frame.addWindowListener(window_event.getClosing());
-        frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-        frame.setBackground(frame_background);
-        frame.getContentPane().setBackground(panes_background);
-        frame.setResizable(false);
+        setDefaultFrameSettings();
+        drawElements();
 
+        try{
+            while (connection_exchanger.exchange(null))
+                showErrorDialog();
+        }catch (NullPointerException e){}
+    }
+
+    @Override
+    public void redrawFrame() throws InterruptedException {
+        setRepeatFrameSettings();
+        drawElements();
+    }
+
+    @Override
+    public void drawElements(){
         reg_login.setFont(font);
         auth_login.setFont(font);
         email.setFont(font);
@@ -122,10 +128,10 @@ public class LogInFrame implements MyFrame {
         sign_up_panel.add(sign_up_button,createConstrains(1,2));
         sign_up_button.addActionListener(sign_up_action);
         sign_up_panel.setBackground(panes_background);
-        //sign_up_panel.setBorder(border);
+        sign_up_panel.setBorder(border);
         frame.add(sign_up_panel,BorderLayout.WEST);
 
-
+        empty_panel.setBackground(panes_background);
         frame.add(empty_panel,BorderLayout.CENTER);
 
         sign_in_panel.setLayout(gridBagLayout);
@@ -135,13 +141,32 @@ public class LogInFrame implements MyFrame {
         sign_in_panel.add(password,createConstrains(1,1));
         sign_in_panel.add(sing_in_button,createConstrains(1,2));
         sign_in_panel.setBackground(panes_background);
-        //sign_in_panel.setBorder(border);
+        sign_in_panel.setBorder(border);
         sing_in_button.addActionListener(sing_in_action);
         frame.add(sign_in_panel,BorderLayout.EAST);
 
         frame.pack();
-        while (connection_exchanger.exchange(null))
-            showErrorDialog();
+    }
+
+    @Override
+    public void setDefaultFrameSettings(){
+        frame.setVisible(true);
+        frame.setBounds(screen_size.width/2-250,screen_size.height/2-150,500,300);
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        frame.setTitle("Authorization");
+        if (frame.getWindowListeners().length < 1) frame.addWindowListener(window_event.getClosing());
+        frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        frame.setBackground(frame_background);
+        frame.getContentPane().setBackground(panes_background);
+        frame.setResizable(false);
+    }
+
+    @Override
+    public void setRepeatFrameSettings() {
+        frame.getJMenuBar().setVisible(false);
+        frame.getContentPane().removeAll();
+        frame.repaint();
+        setDefaultFrameSettings();
     }
 
     @Override
@@ -151,7 +176,8 @@ public class LogInFrame implements MyFrame {
         );
     }
 
-    private void showErrorDialog() throws InterruptedException{
+    @Override
+    public void showErrorDialog() throws InterruptedException{
         int selected = JOptionPane.showConfirmDialog(
                 frame.getContentPane(),"Reconnect?","Bad connection",JOptionPane.YES_NO_OPTION
         );
