@@ -62,7 +62,10 @@ public class Client implements Runnable {
                         socket.getOutputStream().write(command.concat("/" + userName).getBytes());
                         byte[] bytes = new byte[8192];
                         int count = socket.getInputStream().read(bytes);
-                        command_exchanger.exchange(new String(bytes,0,count));
+                        String server_answer = new String(bytes,0,count);
+                        System.out.println(server_answer);
+                        command_exchanger.exchange(server_answer.substring(0,10));
+                        System.out.println(server_answer.substring(10));
 
                         if (command.equals("exit"))
                             System.exit(1);
