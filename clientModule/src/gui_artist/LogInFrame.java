@@ -1,7 +1,7 @@
 package gui_artist;
 
 import controller.Windows;
-import controller.LogInCreator;
+import controller.CommandCreator;
 import model.CommandExchanger;
 
 import javax.swing.*;
@@ -46,7 +46,7 @@ public class LogInFrame implements MyFrame {
             String reg_login = this.reg_login.getText();
             String email = this.email.getText();
 
-            new LogInCreator(command_sender).registration(reg_login,email);
+            new CommandCreator(command_sender).registration(reg_login,email);
             if (command_exchanger.exchange(null).equals("successful"))
                 server_answer = "You've got a new account! Please, check your email to get the password.";
             showInfoDialog();
@@ -62,7 +62,7 @@ public class LogInFrame implements MyFrame {
             String auth_login = this.auth_login.getText();
             String password = new String(this.password.getPassword());
 
-            new LogInCreator(command_sender).authorization(auth_login,password);
+            new CommandCreator(command_sender).authorization(auth_login,password);
 
             server_answer = command_exchanger.exchange(null);
             if (server_answer.equals("successful"))

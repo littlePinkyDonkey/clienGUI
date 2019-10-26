@@ -119,6 +119,7 @@ public class TableFrame implements MyFrame {
         main_frame.repaint();
         main_frame.setTitle(user_name);
         main_frame.getRootPane().setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
+        main_frame.setSize(500,500);
     }
 
     @Override
