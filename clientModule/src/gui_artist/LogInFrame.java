@@ -48,7 +48,7 @@ public class LogInFrame implements MyFrame {
 
             new LogInCreator(command_sender).registration(reg_login,email);
             if (command_exchanger.exchange(null).equals("successful"))
-                server_answer = "You've got a new account! Please, check your email to get the password";
+                server_answer = "You've got a new account! Please, check your email to get the password.";
             showInfoDialog();
 
             this.reg_login.setText(null);
@@ -66,7 +66,7 @@ public class LogInFrame implements MyFrame {
 
             server_answer = command_exchanger.exchange(null);
             if (server_answer.equals("successful"))
-                new MainFrame(command_exchanger,frame,auth_login);
+                new TableFrame(command_exchanger,frame,auth_login).drawFrame();
 
             this.auth_login.setText(null);
             this.password.setText(null);

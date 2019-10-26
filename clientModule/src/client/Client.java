@@ -14,7 +14,6 @@ public class Client implements Runnable {
     private String host;
     private int port;
     private Socket socket;
-    private Scanner scanner = new Scanner(System.in);
     private String userName;
 
     Client(String host, int port, Exchanger<String> command_exchanger, Exchanger<Boolean> connection_exchanger){
